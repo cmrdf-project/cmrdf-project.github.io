@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CMRDF: Morphology-Conditioned Reachability Fields for Task-Space Robot Policy Transfer</title>
+  <meta name="description" content="Morphology-conditioned reachability fields for task-space robot policy transfer, with position-first decomposition and local pose repair.">
+  <meta name="author" content="Ziyun Yang, Jinde Chen, Shiyang Xie, Shangqi Guo">
+  <meta name="keywords" content="Morphology-conditioned reachability, SE(3) pose repair, Task and motion planning">
+  <meta name="theme-color" content="#2463c7">
+  <link rel="canonical" href="https://cmrdf-project.github.io/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="CMRDF">
+  <meta property="og:title" content="CMRDF: Morphology-Conditioned Reachability Fields for Task-Space Robot Policy Transfer">
+  <meta property="og:description" content="Morphology-conditioned reachability fields for task-space robot policy transfer, with position-first decomposition and local pose repair.">
+  <meta property="og:url" content="https://cmrdf-project.github.io/">
+  <meta property="og:image" content="https://cmrdf-project.github.io/static/images/social-preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="CMRDF position-first reachability decomposition">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CMRDF: Morphology-Conditioned Reachability Fields for Task-Space Robot Policy Transfer">
+  <meta name="twitter:description" content="Morphology-conditioned reachability fields for task-space robot policy transfer, with position-first decomposition and local pose repair.">
+  <meta name="twitter:image" content="https://cmrdf-project.github.io/static/images/social-preview.png">
+  <meta name="citation_title" content="CMRDF: Morphology-Conditioned Reachability Fields for Task-Space Robot Policy Transfer">
+  <meta name="citation_author" content="Ziyun Yang"><meta name="citation_author" content="Jinde Chen"><meta name="citation_author" content="Shiyang Xie"><meta name="citation_author" content="Shangqi Guo">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_conference_title" content="Conference on Robot Learning">
+  <meta name="citation_pdf_url" content="https://cmrdf-project.github.io/static/pdfs/cmrdf.pdf">
+  <link rel="icon" href="static/images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/site.css">
+  <script src="static/js/site.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="site-header"><div class="container header-inner">
+  <a class="wordmark" href="./" aria-label="CMRDF home"><img src="static/images/favicon.svg" width="30" height="30" alt="">CMRDF</a>
+  <nav class="site-nav" aria-label="Main navigation"><a href="#abstract">Abstract</a><a class="nav-method" href="#method">Method</a><a href="#demo">Demo</a><a href="#citation">Citation</a></nav>
+</div></header>
+<main id="main-content">
+ <section class="hero" aria-labelledby="paper-title"><div class="hero-body"><div class="container has-text-centered">
+  <div class="venue">Accepted at CoRL 2026</div>
+  <h1 class="publication-title" id="paper-title"><span class="acronym">CMRDF:</span> Morphology-Conditioned Reachability Fields for Task-Space Robot Policy Transfer</h1>
+  <div class="publication-authors"><span>Ziyun Yang<sup>1</sup></span><span>Jinde Chen<sup>1</sup></span><span>Shiyang Xie<sup>1</sup></span><span>Shangqi Guo<sup>2,*</sup></span></div>
+  <div class="affiliations"><p><sup>1</sup> Beijing Qianjue Technology Co., Ltd., Beijing, China</p><p><sup>2</sup> Center for Brain-Inspired Computing Research,<br>Department of Precision Instrument, Tsinghua University, Beijing, China</p></div>
+  <p class="correspondence">* Correspondence to: <a href="mailto:shangqi_guo@mail.tsinghua.edu.cn">shangqi_guo@mail.tsinghua.edu.cn</a></p>
+  <div class="publication-links"><a class="button primary" href="static/pdfs/cmrdf.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M14 3H5v18h14V8zM14 3v6h5M8 13h8M8 17h6"/></svg> Paper</a><a class="button" href="#demo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m12 2 9 5v10l-9 5-9-5V7zM3 7l9 5 9-5M12 12v10"/></svg> Interactive Demo</a><a class="button" href="#code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m8 6-6 6 6 6m8-12 6 6-6 6M14 3l-4 18"/></svg> Code <span aria-hidden="true">↓</span></a></div>
+ </div></div></section>
+ <section class="teaser"><div class="container"><figure class="figure-card"><div class="figure-top"><span>Figure 1 · Core idea</span><a href="static/images/overview.png" target="_blank" rel="noopener">View full resolution ↗</a></div><a class="figure-image" href="static/images/overview.png" target="_blank" rel="noopener"><img src="static/images/overview.png" width="2829" height="924" fetchpriority="high" alt="CMRDF factorizes monolithic SE(3) sampling into dense position reachability and orientation reachability at selected position anchors."></a><figcaption>CMRDF reformulates morphology-conditioned pose reachability as a position-first hierarchical decomposition: a monolithic SE(3) field is factorized into a dense Position-SDF over ℝ³ and a position-conditioned Orientation-SDF over SO(3) at selected reachable position anchors.</figcaption></figure><p class="teaser-summary">First determine <strong>where</strong> a robot can reach.<br>Then learn <strong>which orientations</strong> are feasible there.</p></div></section>
+ <section class="section abstract-section" id="abstract"><div class="container"><div class="reading"><div class="section-head"><span class="eyebrow">The research</span><h2>Abstract</h2></div><p class="abstract-text">Generalist robot policies often represent actions as end-effector target poses in task space, which facilitates policy transfer across robots performing the same task. However, a task-space pose that is feasible for one morphology may be infeasible for another due to joint limits, workspace differences, or self-collision constraints. Existing pose reachability methods often learn monolithic fields over the full SE(3) pose space, which spreads expensive inverse-kinematics supervision over a high-dimensional domain and leaves near-boundary regions poorly sampled in cross-morphology settings. We propose Cross-Morphology Reachability Distance Fields (CMRDF), a morphology-conditioned task-space reachability representation that decomposes full-pose feasibility into global position reachability and position-conditioned orientation reachability. The two outputs are signed-distance function (SDF) proxies with physical units. CMRDF uses dense forward-kinematics coverage and distance-to-boundary targets for the Position-SDF, and inverse-kinematics boundary mining at representative position anchors for the Orientation-SDF. The differentiable fields support reachability queries and gradient-based local pose repair. Under matched full-pose inverse-kinematics budgets, CMRDF improves SE(3) accuracy over a capacity-matched monolithic baseline by 2.5 percentage points at both 1.00× and 0.51×. It also supports low-distortion pose repair and zero-shot transfer under joint-limit and same-family geometry shifts. In target-side policy fine-tuning, converted demonstrations reduce the required native data from 60–80 to 20 demonstrations at 90% of a target-only reference policy&#x27;s success rate.</p></div></div></section>
+ <section class="section" id="method"><div class="container"><div class="section-head"><span class="eyebrow">Method overview</span><h2>Two fields. One reachability prior.</h2><p>A morphology-conditioned representation connects dense position supervision with focused orientation boundary mining, supporting reachability queries and gradient-based local pose repair.</p></div><figure class="figure-card"><div class="figure-top"><span>Figure 2 · Supervision &amp; architecture</span><a href="static/images/method.png" target="_blank" rel="noopener">View full resolution ↗</a></div><a class="figure-image" href="static/images/method.png" target="_blank" rel="noopener"><img src="static/images/method.png" width="3161" height="1608" loading="lazy" alt="Hierarchical FK/EDT position supervision and anchor-based IK orientation mining feed a morphology-conditioned Position-SDF and Orientation-SDF model."></a><figcaption>CMRDF supervision and morphology-conditioned two-field architecture. Dense FK/EDT supervision is used for the Position-SDF, and anchor-based IK mining is used for the Orientation-SDF.</figcaption></figure><div class="method-grid"><div class="method-item"><h3>Position-dense supervision</h3><p>Forward-kinematics coverage and distance-to-boundary targets describe the reachable position domain. The Position-SDF proxy has physical units of meters.</p></div><div class="method-item"><h3>Orientation-focused supervision</h3><p>Inverse-kinematics boundary mining concentrates on representative reachable position anchors. The position-conditioned Orientation-SDF proxy has units of radians.</p></div></div></div></section>
+ <section class="section" id="demo"><div class="container"><div class="section-head demo-heading"><div><span class="eyebrow">Interactive visualization</span><h2>Explore reachability in 3D.</h2><p>Inspect how orientation support changes across the position-reachable workspace.</p></div><a class="button small" href="interactive/" target="_blank" rel="noopener">Open dedicated view ↗</a></div><div class="demo-card" data-demo data-demo-src="interactive/orientation_anchor_visualization.html" data-autoload="false">
+ <div class="demo-bar"><strong>Anchor-conditioned orientation reachability</strong><span>Drag to rotate · Scroll to zoom</span></div>
+ <div class="demo-stage" aria-busy="false"><div class="demo-poster"><img src="static/images/interactive-preview.png" alt="Actual 3D visualization showing the position-reachable point cloud, selected red anchors and their colored orientation-support projections." width="1200" height="620" loading="lazy"><div class="demo-launch"><button class="button primary" data-launch-demo><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m12 2 9 5v10l-9 5-9-5V7zM3 7l9 5 9-5M12 12v10"/></svg> Explore in 3D</button><small>Interactive visualization · loads on click · about 6.6 MB</small></div></div>
+  <p class="demo-status" role="status" hidden>Loading the 3D visualization…</p>
+  <div class="demo-error" role="alert" hidden><h3>Unable to load the 3D view</h3><p data-error-message></p><button class="button" data-retry-demo>Try again</button><a class="button" href="interactive/" target="_blank" rel="noopener">Open separately ↗</a></div>
+ </div>
+ <div class="demo-notes"><div><h3>Explore the position anchors</h3><p>Drag to rotate and scroll or pinch to zoom. The slider cumulatively shows the first N anchors, ordered from the position interior toward the boundary. Start with a few anchors to inspect their individual projections.</p></div><div><h3>Read the orientation support</h3><p>The sphere shows tool z-axis directions. Color indicates reachable rotation support about each direction, from dark blue (little or none) to yellow (larger support).</p><div class="legend"><span><i class="dot" aria-hidden="true"></i>Position samples</span><span><i class="dot red" aria-hidden="true"></i>Anchors</span><span><i class="spectrum" aria-hidden="true"></i>Low → high support</span></div></div></div>
+</div><p class="interpretation">This precomputed, qualitative visualization shows a projection of orientation reachability, not the full SO(3) boundary or online model inference. It is not a quantitative evaluation.</p><noscript><p>Enable JavaScript to use the interactive view. The paper and figures above remain available.</p></noscript></div></section>
+ <section class="section release-section" id="code"><div class="container release-card"><div><span class="eyebrow">Project resources</span><h2>Code release in preparation</h2><p>The research implementation is being prepared for release. A public repository link will be added here when available.</p></div><span class="status-pill">Release date to be announced</span></div></section>
+ <section class="section" id="citation"><div class="container reading"><div class="citation-header"><h2>Citation</h2><button class="button small" data-copy-citation>Copy BibTeX</button></div><pre class="citation-box"><code id="bibtex-code">@inproceedings{yang2026cmrdf,
+  title     = {CMRDF: Morphology-Conditioned Reachability Fields for
+               Task-Space Robot Policy Transfer},
+  author    = {Yang, Ziyun and Chen, Jinde and Xie, Shiyang and Guo, Shangqi},
+  booktitle = {Conference on Robot Learning},
+  year      = {2026},
+  url       = {https://cmrdf-project.github.io/}
+}</code></pre><p id="copy-status" class="copy-status" role="status" aria-live="polite"></p><p class="citation-note">Accepted at CoRL 2026. Proceedings identifiers will be added when available.</p></div></section>
+</main>
+<footer class="site-footer"><div class="container footer-inner">
+  <p>Website adapted from <a href="https://github.com/eliahuhorwitz/Academic-project-page-template">Academic Project Page Template</a>, based in part on <a href="https://nerfies.github.io/">Nerfies</a>.<br>Website template and adaptations: <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Research materials retain their respective rights.</p>
+  <span>CMRDF · CoRL 2026</span>
+</div></footer>
+</body>
+</html>

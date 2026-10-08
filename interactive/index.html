@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CMRDF · Interactive orientation reachability</title>
+  <meta name="description" content="Morphology-conditioned reachability fields for task-space robot policy transfer, with position-first decomposition and local pose repair.">
+  <meta name="author" content="Ziyun Yang, Jinde Chen, Shiyang Xie, Shangqi Guo">
+  <meta name="keywords" content="Morphology-conditioned reachability, SE(3) pose repair, Task and motion planning">
+  <meta name="theme-color" content="#2463c7">
+  <link rel="canonical" href="https://cmrdf-project.github.io/interactive/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="CMRDF">
+  <meta property="og:title" content="CMRDF · Interactive orientation reachability">
+  <meta property="og:description" content="Morphology-conditioned reachability fields for task-space robot policy transfer, with position-first decomposition and local pose repair.">
+  <meta property="og:url" content="https://cmrdf-project.github.io/interactive/">
+  <meta property="og:image" content="https://cmrdf-project.github.io/static/images/social-preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="CMRDF position-first reachability decomposition">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CMRDF · Interactive orientation reachability">
+  <meta name="twitter:description" content="Morphology-conditioned reachability fields for task-space robot policy transfer, with position-first decomposition and local pose repair.">
+  <meta name="twitter:image" content="https://cmrdf-project.github.io/static/images/social-preview.png">
+  <meta name="citation_title" content="CMRDF: Morphology-Conditioned Reachability Fields for Task-Space Robot Policy Transfer">
+  <meta name="citation_author" content="Ziyun Yang"><meta name="citation_author" content="Jinde Chen"><meta name="citation_author" content="Shiyang Xie"><meta name="citation_author" content="Shangqi Guo">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_conference_title" content="Conference on Robot Learning">
+  <meta name="citation_pdf_url" content="https://cmrdf-project.github.io/static/pdfs/cmrdf.pdf">
+  <link rel="icon" href="../static/images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../static/css/bulma.min.css">
+  <link rel="stylesheet" href="../static/css/site.css">
+  <script src="../static/js/site.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="site-header"><div class="container header-inner">
+  <a class="wordmark" href="../" aria-label="CMRDF home"><img src="../static/images/favicon.svg" width="30" height="30" alt="">CMRDF</a>
+  <nav class="site-nav" aria-label="Main navigation"><a href="../#abstract">Abstract</a><a class="nav-method" href="../#method">Method</a><a href="../#demo">Demo</a><a href="../#citation">Citation</a></nav>
+</div></header>
+<main id="main-content" class="interactive-main"><div class="container"><div class="interactive-intro"><a class="back-link" href="../">← Back to the project</a><h1>Anchor-conditioned orientation reachability</h1><p>Explore the same precomputed visualization in a dedicated workspace. The slider shows the first N anchors cumulatively; it does not select a single anchor.</p></div><div class="demo-card" data-demo data-demo-src="orientation_anchor_visualization.html" data-autoload="true">
+ <div class="demo-bar"><strong>Anchor-conditioned orientation reachability</strong><span>Drag to rotate · Scroll to zoom</span></div>
+ <div class="demo-stage" aria-busy="false">
+  <p class="demo-status" role="status" hidden>Loading the 3D visualization…</p>
+  <div class="demo-error" role="alert" hidden><h3>Unable to load the 3D view</h3><p data-error-message></p><button class="button" data-retry-demo>Try again</button><a class="button" href="orientation_anchor_visualization.html" target="_blank" rel="noopener">Open separately ↗</a></div>
+ </div>
+ <div class="demo-notes"><div><h3>Explore the position anchors</h3><p>Drag to rotate and scroll or pinch to zoom. The slider cumulatively shows the first N anchors, ordered from the position interior toward the boundary. Start with a few anchors to inspect their individual projections.</p></div><div><h3>Read the orientation support</h3><p>The sphere shows tool z-axis directions. Color indicates reachable rotation support about each direction, from dark blue (little or none) to yellow (larger support).</p><div class="legend"><span><i class="dot" aria-hidden="true"></i>Position samples</span><span><i class="dot red" aria-hidden="true"></i>Anchors</span><span><i class="spectrum" aria-hidden="true"></i>Low → high support</span></div></div></div>
+</div><p class="interpretation">The colored sphere is a two-dimensional projection of orientation support, not the complete SO(3) boundary. This is a qualitative illustration, not online model inference or a quantitative evaluation.</p><noscript><p>JavaScript and WebGL are required for the 3D view. <a href="../static/pdfs/cmrdf.pdf">Read the paper</a> or <a href="../">return to the project figures</a>.</p></noscript></div></main><footer class="site-footer"><div class="container footer-inner">
+  <p>Website adapted from <a href="https://github.com/eliahuhorwitz/Academic-project-page-template">Academic Project Page Template</a>, based in part on <a href="https://nerfies.github.io/">Nerfies</a>.<br>Website template and adaptations: <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Research materials retain their respective rights.</p>
+  <span>CMRDF · CoRL 2026</span>
+</div></footer>
+</body>
+</html>
