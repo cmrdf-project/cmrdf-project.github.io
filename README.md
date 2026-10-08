@@ -9,7 +9,7 @@ Static English project page for **CMRDF: Morphology-Conditioned Reachability Fie
 - Paper: https://cmrdf-project.github.io/static/pdfs/cmrdf.pdf
 - Website repository: https://github.com/cmrdf-project/cmrdf-project.github.io
 
-These are the intended permanent addresses; see the deployment status delivered with the project for verification. The research code is currently **Code release in preparation**.
+Published with GitHub Pages from `main` and `/ (root)`, with HTTPS enforced. The home page, interactive view and PDF were verified without authentication on 2026-10-08. The research code is currently **Code release in preparation**.
 
 ## Preview locally
 
@@ -69,7 +69,7 @@ Install Playwright in a development-only virtual environment, install its Chromi
 python scripts/verify_site.py --base-url http://127.0.0.1:8765 --output-dir /tmp/cmrdf-site-check
 ```
 
-Checks cover initial loading, all key anchor counts, drag/zoom/reset, clipboard, desktop and mobile layout, 404/error recovery, and WebGL failure. The script writes screenshots and a JSON report outside the site. The original-data and paper comparisons were additionally checked in the local source workspace.
+Checks cover initial loading, all key anchor counts, drag/zoom/reset, clipboard, desktop and mobile layout, 404/error recovery, and WebGL failure. The script writes screenshots and a JSON report outside the site. It also accepts the public site as `--base-url`; HTTPS checks respect `HTTPS_PROXY` when set. All 17 checks passed locally and online using Playwright 1.63.0 / Chromium. The original-data and paper comparisons were additionally checked in the local source workspace.
 
 ## Attribution
 

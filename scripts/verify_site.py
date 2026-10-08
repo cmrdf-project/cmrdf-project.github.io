@@ -2,6 +2,7 @@
 """Browser acceptance checks. Requires Playwright + Chromium; preview server must be running."""
 import argparse
 import json
+import os
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 
@@ -19,7 +20,10 @@ def main():
     def no_overflow(page):
         return page.evaluate('document.documentElement.scrollWidth <= innerWidth')
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True, args=['--use-angle=swiftshader','--enable-unsafe-swiftshader'])
+        launch_options = {'headless':True, 'args':['--use-angle=swiftshader','--enable-unsafe-swiftshader']}
+        if base.startswith('https://') and os.environ.get('HTTPS_PROXY'):
+            launch_options['proxy'] = {'server':os.environ['HTTPS_PROXY']}
+        browser = p.chromium.launch(**launch_options)
         ctx = browser.new_context(viewport={'width':1440,'height':1000})
         page = ctx.new_page()
         failures, errors, requests = [], [], []
@@ -60,17 +64,21 @@ def main():
         slider.press('Home'); slider.press('ArrowRight')
         frame.wait_for_function('document.querySelector("#reachability-plot").dataset.visibleAnchors==="1"', timeout=60000)
         passed('Slider keyboard operation')
-        camera = frame.locator('#reachability-plot').evaluate('(el)=>JSON.stringify(el._fullLayout.scene.camera)')
+        camera = frame.locator('#reachability-plot').evaluate('(el)=>JSON.stringify(el._fullLayout.scene._scene.getCamera())')
         canvas = frame.locator('#reachability-plot canvas').first
+        canvas.scroll_into_view_if_needed()
         box = canvas.bounding_box()
         page.mouse.move(box['x']+box['width']*.48, box['y']+box['height']*.48)
         page.mouse.down()
         page.mouse.move(box['x']+box['width']*.63, box['y']+box['height']*.60, steps=12)
         page.mouse.up()
-        frame.wait_for_function('(old)=>JSON.stringify(document.getElementById("reachability-plot")._fullLayout.scene.camera)!==old', arg=camera)
-        before_zoom = frame.locator('#reachability-plot').evaluate('(el)=>JSON.stringify(el._fullLayout.scene.camera)')
-        page.mouse.wheel(0, -160)
-        frame.wait_for_function('(old)=>JSON.stringify(document.getElementById("reachability-plot")._fullLayout.scene.camera)!==old', arg=before_zoom)
+        frame.wait_for_function('(old)=>JSON.stringify(document.getElementById("reachability-plot")._fullLayout.scene._scene.getCamera())!==old', arg=camera)
+        canvas.scroll_into_view_if_needed()
+        box = canvas.bounding_box()
+        page.mouse.move(box['x']+box['width']*.5, box['y']+box['height']*.5)
+        before_zoom = frame.locator('#reachability-plot').evaluate('(el)=>JSON.stringify(el._fullLayout.scene._scene.getCamera())')
+        page.mouse.wheel(0, -300)
+        frame.wait_for_function('(old)=>JSON.stringify(document.getElementById("reachability-plot")._fullLayout.scene._scene.getCamera())!==old', arg=before_zoom)
         frame.get_by_role('button',name='Reset view').click()
         frame.wait_for_function('document.getElementById("reachability-plot")._fullLayout.scene.camera.eye.x===1.25')
         passed('3D drag, wheel zoom and reset')
