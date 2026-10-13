@@ -1,0 +1,161 @@
+/* Academic landing-page refresh inspired by OpenWAM's clear visual hierarchy. */
+@font-face {
+  font-family: Geist;
+  src: url('../fonts/Geist-Latin.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+:root {
+  --ink: #18181b;
+  --muted: #66666d;
+  --blue: #2d62d5;
+  --line: #e5e5e8;
+  --wash: #fafafa;
+  --radius: 10px;
+}
+
+body { font-family: Geist, Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif; }
+.container { width: min(1400px, calc(100% - 48px)); max-width: 1400px; }
+.reading { max-width: 900px; }
+.site-header { position: sticky; top: 0; z-index: 20; height: 70px; background: rgba(255,255,255,.93); backdrop-filter: blur(12px); }
+.wordmark { gap: 10px; font-size: 17px; letter-spacing: -.2px; font-weight: 700; }
+.wordmark img { width: 28px; height: 28px; }
+.site-nav { gap: 32px; font-weight: 500; }
+.site-nav a:hover { color: var(--ink); }
+
+.hero-body { padding: 74px 0 48px; }
+.publication-title {
+  max-width: 990px;
+  margin: 0 auto;
+  color: #44444a;
+  font-size: clamp(25px, 2.5vw, 34px);
+  font-weight: 450;
+  line-height: 1.3;
+  letter-spacing: -.55px;
+}
+.publication-title .acronym {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 17px;
+  margin-bottom: 24px;
+  color: var(--ink);
+  font-size: clamp(47px, 5vw, 68px);
+  font-weight: 730;
+  line-height: 1.1;
+  letter-spacing: -2px;
+}
+.publication-title .acronym img { width: 52px; height: 52px; flex: none; }
+.venue {
+  display: inline-block;
+  margin: 23px 0 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #77777f;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.venue::before { display: none; }
+.publication-authors {
+  gap: 5px 22px;
+  margin-top: 26px;
+  font-size: 17px;
+  font-weight: 450;
+}
+.affiliations {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  max-width: 900px;
+  margin: 29px auto 0;
+  color: var(--ink);
+}
+.affiliations p {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  flex: 1;
+  max-width: 430px;
+  padding: 14px 18px;
+  border-top: 1px solid var(--line);
+  font-size: 14px;
+  line-height: 1.4;
+  text-align: left;
+}
+.affiliations p > span { display: block; }
+.affiliations small {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+.affiliations sup { font-size: 11px; font-weight: 700; color: var(--ink); line-height: 1.7; }
+.correspondence { margin-top: 12px; }
+.publication-links { gap: 10px; margin-top: 29px; }
+.button {
+  min-height: 40px;
+  padding: 9px 16px;
+  border-color: #cbd0d9;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 650;
+}
+.button.primary { color: #fff; background: #191b20; border-color: #191b20; }
+.button.primary:hover { background: #343841; }
+.publication-links .button:first-child { color: #fff; background: #b91c24; border-color: #b91c24; }
+.publication-links .button:first-child:hover { background: #96151c; border-color: #96151c; }
+.publication-links .button:nth-child(2) { color: #171717; background: #f4c900; border-color: #f4c900; }
+.publication-links .button:nth-child(2):hover { background: #dbb400; border-color: #dbb400; }
+.publication-links .button:nth-child(3) { color: #fff; background: #191919; border-color: #191919; }
+.publication-links .button:nth-child(3):hover { background: #343434; border-color: #343434; }
+
+.teaser { padding: 0 0 66px; }
+.figure-top { padding: 12px 19px; background: #fff; }
+.figure-top a { color: #424249; }
+.figure-image { padding: 0; }
+.figure-card figcaption { padding: 16px 20px 20px; font-size: 13px; line-height: 1.65; }
+.abstract-section { background: #fff; }
+.section { padding: 80px 0; }
+.section-head { max-width: 900px; margin-bottom: 32px; }
+.section-head h2, .citation-header h2 { color: var(--ink); font-size: clamp(29px, 3vw, 39px); font-weight: 650; letter-spacing: -1.2px; }
+.section-head p { color: var(--muted); font-size: 16px; }
+.eyebrow { color: #7b8189; font-size: 11px; letter-spacing: 1.3px; }
+.abstract-text { color: #37373d; font-size: 17px; line-height: 1.82; }
+.method-grid { gap: 16px; }
+.method-item, .method-item:last-child { padding: 23px 24px; border: 1px solid var(--line); border-radius: 9px; }
+.method-item h3 { font-size: 18px; font-weight: 650; }
+.demo-heading .button { color: #fff; background: var(--blue); border-color: var(--blue); }
+.demo-heading .button:hover { color: #fff; background: #214ca9; border-color: #214ca9; }
+.demo-card { border-radius: 9px; }
+.demo-bar { background: #fafafa; }
+.citation-box { background: #fafafa; color: #37373d; }
+.site-footer { background: #fafafa; }
+
+@media (max-width: 720px) {
+  .container { width: calc(100% - 32px); }
+  .site-header { height: 64px; }
+  .site-nav { gap: 13px; }
+  .wordmark { font-size: 15px; }
+  .hero-body { padding: 50px 0 35px; }
+  .publication-title { font-size: clamp(24px, 6vw, 30px); letter-spacing: -.3px; }
+  .publication-title .acronym { gap: 12px; margin-bottom: 20px; font-size: 46px; letter-spacing: -1.5px; }
+  .publication-title .acronym img { width: 40px; height: 40px; }
+  .venue { margin-top: 18px; font-size: 10px; }
+  .publication-authors { margin-top: 21px; font-size: 15px; }
+  .affiliations { flex-direction: column; gap: 0; margin-top: 21px; }
+  .affiliations p { width: 100%; max-width: none; padding: 10px 8px; font-size: 12px; }
+  .affiliations small { font-size: 11px; }
+  .publication-links { margin-top: 24px; }
+  .publication-links .button { padding: 9px 12px; }
+  .figure-image { padding: 0; overflow-x: auto; }
+  .figure-image img { max-width: none; min-width: 800px; }
+  .section { padding: 53px 0; }
+  .section-head h2, .citation-header h2 { font-size: 29px; }
+  .method-grid { gap: 12px; }
+  .method-item, .method-item:last-child { padding: 18px; }
+}

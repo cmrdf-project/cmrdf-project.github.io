@@ -69,8 +69,10 @@ Install Playwright in a development-only virtual environment, install its Chromi
 python scripts/verify_site.py --base-url http://127.0.0.1:8765 --output-dir /tmp/cmrdf-site-check
 ```
 
-Checks cover initial loading, all key anchor counts, drag/zoom/reset, clipboard, desktop and mobile layout, 404/error recovery, and WebGL failure. The script writes screenshots and a JSON report outside the site. It also accepts the public site as `--base-url`; HTTPS checks respect `HTTPS_PROXY` when set. All 17 checks passed locally and online using Playwright 1.63.0 / Chromium. The original-data and paper comparisons were additionally checked in the local source workspace.
+Checks cover initial loading, all key anchor counts, drag/zoom/reset, clipboard, desktop and mobile layout, 404/error recovery, and WebGL failure. The script writes screenshots and a JSON report outside the site. It also accepts the public site as `--base-url`; HTTPS checks respect `HTTPS_PROXY` when set. The original release passed all 17 checks locally and online using Playwright 1.63.0 / Chromium; rerun them after design changes. The original-data and paper comparisons were additionally checked in the local source workspace.
 
 ## Attribution
 
 Adapted from [Academic Project Page Template](https://github.com/eliahuhorwitz/Academic-project-page-template), based in part on [Nerfies](https://nerfies.github.io/). See [LICENSE.md](LICENSE.md) for the website's CC BY-SA 4.0 terms and bundled library notices. This does not choose a license for the unreleased research code.
+
+The locally hosted [Geist](https://github.com/vercel/geist-font) typeface is licensed under the SIL Open Font License 1.1; its license is included at `static/fonts/OFL.txt`.
