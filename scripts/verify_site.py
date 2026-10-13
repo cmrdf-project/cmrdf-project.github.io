@@ -31,7 +31,7 @@ def main():
         page.on('pageerror', lambda error: errors.append(str(error)))
         page.on('request', lambda request: requests.append(request.url))
         page.goto(base+'/', wait_until='networkidle')
-        assert page.locator('h1').inner_text() == 'CMRDF: Morphology-Conditioned Reachability Fields for Task-Space Robot Policy Transfer'
+        assert ' '.join(page.locator('h1').text_content().split()) == 'CMRDF: Morphology-Conditioned Reachability Fields for Task-Space Robot Policy Transfer'
         assert page.locator('iframe').count() == 0
         assert not any('orientation_anchor_visualization' in u for u in requests)
         passed('Homepage does not load the interactive HTML before clicking')
